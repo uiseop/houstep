@@ -1,3 +1,5 @@
+import { ReactComponent as Logo } from '@assets/icons/CheckFilled.svg';
+
 function App() {
 	return (
 		<div className="App">
@@ -5,6 +7,7 @@ function App() {
 				<p>
 					Edit <code>src/App.tsx</code> and save to reload.
 				</p>
+				<Logo />
 				<a
 					className="App-link"
 					href="https://reactjs.org"
