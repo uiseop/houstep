@@ -1,21 +1,18 @@
 import styled from '@emotion/styled';
+import { useRouter } from '@hooks/useRouter';
+
 import colors from '@assets/colors.json';
 import { Button } from '@components/common';
-import { useNavigate } from 'react-router-dom';
 import { LogoBig } from '@assets/icons';
 
 export const Home = () => {
-	const navigate = useNavigate();
-
-	const handleClick = () => {
-		navigate('/order');
-	};
+	const { navToOrder } = useRouter();
 
 	return (
 		<Wrapper>
 			<LogoBig />
 			<Button
-				onClick={handleClick}
+				onClick={navToOrder}
 				content="주문하러 가기"
 				borderRadius={20}
 			/>
