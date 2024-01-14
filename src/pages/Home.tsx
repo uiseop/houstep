@@ -2,12 +2,23 @@ import styled from '@emotion/styled';
 import { ReactComponent as LogoBig } from '@assets/icons/LogoBig.svg';
 import colors from '@assets/colors.json';
 import { Button } from '@components/common';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
+	const navigate = useNavigate();
+
+	const handleClick = () => {
+		navigate('/order');
+	};
+
 	return (
 		<Wrapper>
 			<LogoBig />
-			<Button content="주문하러 가기" borderRadius={20} />
+			<Button
+				onClick={handleClick}
+				content="주문하러 가기"
+				borderRadius={20}
+			/>
 		</Wrapper>
 	);
 };
