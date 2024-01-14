@@ -58,15 +58,19 @@ interface StyledButtonProps {
 const StyledButton = styled.button<StyledButtonProps>(
 	({ color, size, backgroundColor, borderRadius, fullWidth }) => ({
 		color,
+		fontFamily: 'inherit',
 		backgroundColor,
+		lineHeight: '1.2',
+		letterSpacing: '-1.7px',
+		wordSpacing: '-1px',
 		fontSize: `${
 			size === 'large' ? '25px' : size === 'medium' ? '22px' : '18px'
 		}`,
 		borderRadius,
-		width: `${fullWidth && '100%'}`,
+		width: `${fullWidth ? '100%' : 'auto'}`,
 		padding: `${
 			size === 'large'
-				? '29px 11px'
+				? '29px 13px'
 				: size === 'medium'
 					? '21px 11px'
 					: '13.3px 11px 12.62px'

@@ -54,6 +54,7 @@ const resetStyle = css`
 	}
 	html {
 		box-sizing: border-box;
+		font-family: 'Inter', sans-serif;
 	}
 	*,
 	:after,
