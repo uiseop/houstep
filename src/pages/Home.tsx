@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import { ReactComponent as LogoBig } from '@assets/icons/LogoBig.svg';
 import colors from '@assets/colors.json';
 import { Button } from '@components/common';
 import { useNavigate } from 'react-router-dom';
+import { LogoBig } from '@assets/icons';
 
 export const Home = () => {
 	const navigate = useNavigate();
