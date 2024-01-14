@@ -48,6 +48,9 @@ const resetStyle = css`
 	input,
 	select {
 		margin: 0;
+		border: none;
+		outline: 0;
+		padding: 0;
 	}
 	html {
 		box-sizing: border-box;
@@ -76,5 +79,15 @@ const resetStyle = css`
 	a {
 		text-decoration: none;
 		color: var(--colors-text);
+	}
+	button {
+		cursor: pointer;
+		-moz-appearance: none; // Reset
+		-webkit-appearance: none; // Reset
+
+		&:disabled {
+			pointer-events: none;
+			cursor: default;
+		}
 	}
 `;
