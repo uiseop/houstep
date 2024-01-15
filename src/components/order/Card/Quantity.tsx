@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
+import { addCommasToNumber } from '@utils/index';
 
 interface QuantityProps {
 	initQuantity?: number;
@@ -19,7 +20,7 @@ export const Quantity = ({ initQuantity = 0 }: QuantityProps) => {
 	return (
 		<Wrapper>
 			<button onClick={handleMinusClick}>-</button>
-			<span>{quantity}</span>
+			<span>{addCommasToNumber(quantity)}</span>
 			<button onClick={handlePlusClick}>+</button>
 		</Wrapper>
 	);

@@ -20,4 +20,5 @@ const Wrapper = styled.header({
 	display: 'flex',
 	alignItems: 'center',
 	padding: '0 12px',
+	boxShadow: `0px 4px 4px rgba(0, 0, 0, 0.25)`,
 });
