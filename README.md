@@ -2,6 +2,33 @@
 
 해당 프로젝트는 [Create React App](https://github.com/facebook/create-react-app)을 사용하여 세팅했습니다.
 
+## Project Tree
+
+📦public
+┣ 📂images
+┃ ┗ 📜defaultImage.png // 기본 상품 이미지
+┗ 📜index.html
+
+📦src
+┣ 📂api // Axios Instance와 API Routes를 관리합니다.
+┣ 📂assets // icon이나 App에서 사용하는 색상 정보와 같은 상수 데이터를 관리합니다.
+┃ ┣ 📂icons
+┃ ┗ 📜colors.json
+┣ 📂components
+┃ ┣ 📂common // 공통적으로 사용되는/사용될 컴포넌트를 분리합니다.
+┃ ┣ 📂order // order page에서 사용되는 컴포넌트를 관리합니다.
+┣ 📂context // 전역 으로 사용되는 정보를 Context API를 통해 관리합니다.
+┣ 📂db
+┃ ┗ 📜db.json // 제공해주신 로컬 서버입니다.
+┣ 📂hooks
+┣ 📂models // db에 저장된 Product의 타입을 관리합니다.
+┣ 📂pages
+┣ 📂stores
+┣ 📂utils // 여러 파일에서 함수처럼 사용되는 코드를 관리합니다.
+┣ 📜App.tsx
+┣ 📜index.tsx
+┣ 📜router.tsx // App의 Routes를 관리합니다.
+
 ## Available Scripts
 
 이 프로젝트에서는 다음과 같은 명령어들을 실행할 수 있습니다.:
@@ -14,29 +41,3 @@
 ### `npm run server` or `yarn server`
 
 제공한 로컬 서버를 실행시킵니다. 서버를 실행시키지 않으면 더미 데이터를 확인할 수 없으니 꼭 함께 실행해주세요.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
