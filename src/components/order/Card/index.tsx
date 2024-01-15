@@ -3,19 +3,28 @@ import { Quantity } from './Quantity';
 import { addCommasToNumber } from '@utils/index';
 import { Badge } from '@components/common/Badge';
 import { Product } from 'src/models';
+import { useCartStore } from '@stores/cart';
+import colors from '@assets/colors.json';
 
-export const Card = ({ id, name, event, materialType, price }: Product) => {
+interface CardProps {
+	product: Product;
+}
+
+export const Card = ({ product }: CardProps) => {
+	const { getItemQuantity } = useCartStore();
+	const quantity = getItemQuantity(product.id);
+
 	return (
-		<Wrapper isActive={false}>
+		<Wrapper isActive={!!quantity}>
 			<img src="/images/defaultImage.png" alt="product image" />
 			<CardInfoWrapper>
 				<Heaedr>
-					<Title>{name}</Title>
-					{event ? <Badge content="이벤트" /> : ''}
+					<Title>{product.name}</Title>
+					{product.event ? <Badge content="이벤트" /> : ''}
 				</Heaedr>
 				<DescriptionWrapper>
-					<Quantity id={id} name={name} price={price} />
-					<Price>{addCommasToNumber(price)}원</Price>
+					<Quantity product={product} />
+					<Price>{addCommasToNumber(product.price)}원</Price>
 				</DescriptionWrapper>
 			</CardInfoWrapper>
 		</Wrapper>
@@ -26,11 +35,10 @@ const Wrapper = styled.article<{ isActive: boolean }>(({ isActive }) => ({
 	display: 'flex',
 	padding: '9px 12px',
 	gap: 8,
-	border: `1px solid ${
-		isActive ? 'rgba(247, 90, 47, 0.10)' : 'rgba(0, 0, 0, 0.30)'
-	}`,
+	border: '1px solid rgba(0, 0, 0, 0.30)',
 	borderRadius: '10px',
 	minWidth: '250px',
+	backgroundColor: `${isActive ? 'rgba(247, 90, 47, 0.10)' : colors.white}`,
 
 	'& img': {
 		width: 62,
