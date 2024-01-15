@@ -2,6 +2,7 @@ import { useProductContext } from '@context/ProductProvider';
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
 import { useRouter } from './useRouter';
 import { CartItem, useCartStore } from '@stores/cart';
+import { OrderResponse } from '@api/responseTypes';
 
 export const useGetProductList = () => {
 	const { product } = useProductContext();
@@ -30,7 +31,8 @@ export const usePostOrderList = () => {
 	const { navToComplete, navToError } = useRouter();
 
 	return useMutation({
-		mutationFn: (cart: CartItem[]) => product!.postOrder(cart),
+		mutationFn: (cart: CartItem[]) =>
+			product?.postOrder(cart) as Promise<OrderResponse>,
 		onSuccess: () => {
 			removeAll();
 			navToComplete();
