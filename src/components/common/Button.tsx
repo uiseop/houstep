@@ -8,6 +8,9 @@ interface ButtonProps {
 	color?: string;
 	backgroundColor?: string;
 	disabled?: boolean;
+	loading?: boolean;
+	disabledBackColor?: string;
+	loadingContent?: string;
 	size?: ButtonSize;
 	type?: ButtonType;
 	borderRadius?: number;
@@ -29,20 +32,24 @@ export const Button = ({
 	borderRadius = 0,
 	fullWidth = false,
 	content,
+	disabledBackColor = colors.grey,
+	loading = false,
+	loadingContent = 'loading...',
 	onClick,
 }: ButtonProps) => {
 	return (
 		<StyledButton
-			disabled={disabled}
+			disabled={disabled || loading}
 			color={color}
 			backgroundColor={backgroundColor}
+			disabledBackColor={disabledBackColor}
 			borderRadius={borderRadius}
 			size={size}
 			fullWidth={fullWidth}
 			type={type}
 			onClick={onClick}
 		>
-			{content}
+			{loading ? loadingContent : content}
 		</StyledButton>
 	);
 };
@@ -50,13 +57,22 @@ export const Button = ({
 interface StyledButtonProps {
 	color: string;
 	backgroundColor: string;
+	disabledBackColor: string;
 	size: ButtonSize;
 	borderRadius: number;
 	fullWidth: boolean;
+	disabled: boolean;
 }
 
 const StyledButton = styled.button<StyledButtonProps>(
-	({ color, size, backgroundColor, borderRadius, fullWidth }) => ({
+	({
+		color,
+		size,
+		backgroundColor,
+		borderRadius,
+		fullWidth,
+		disabledBackColor,
+	}) => ({
 		color,
 		fontFamily: 'inherit',
 		backgroundColor,
@@ -75,5 +91,8 @@ const StyledButton = styled.button<StyledButtonProps>(
 					? '21px 11px'
 					: '13.3px 11px 12.62px'
 		}`,
+		'&:disabled': {
+			backgroundColor: disabledBackColor,
+		},
 	}),
 );
