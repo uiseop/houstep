@@ -1,23 +1,19 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+해당 프로젝트는 [Create React App](https://github.com/facebook/create-react-app)을 사용하여 세팅했습니다.
 
 ## Available Scripts
 
-In the project directory, you can run:
+이 프로젝트에서는 다음과 같은 명령어들을 실행할 수 있습니다.:
 
-### `npm start`
+### `npm start` or `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+프로젝트를 development mode로 실행합니다.\
+[로컬 주소](http://localhost:3000)를 통해 확인하실 수 있습니다. to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### `npm run server` or `yarn server`
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+제공한 로컬 서버를 실행시킵니다. 서버를 실행시키지 않으면 더미 데이터를 확인할 수 없으니 꼭 함께 실행해주세요.
 
 ### `npm run build`
 
