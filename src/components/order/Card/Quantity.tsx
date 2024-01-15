@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { useState } from 'react';
 import { addCommasToNumber } from '@utils/index';
 import { useCartStore } from '@stores/cart';
 import { Product } from 'src/models';
@@ -43,7 +42,7 @@ const Wrapper = styled.div`
 
 	& > * {
 		text-align: center;
-		width: 19px;
+		min-width: 19px;
 		height: 22px;
 		background-color: transparent;
 	}

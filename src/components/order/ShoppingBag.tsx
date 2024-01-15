@@ -29,7 +29,7 @@ export const ShoppingBag = () => {
 };
 
 const Wrapper = styled.div({
-	position: 'absolute',
+	position: 'fixed',
 	width: '100%',
 	display: 'flex',
 	flexDirection: 'column',
@@ -47,7 +47,6 @@ const OrderInfo = styled.ul({
 	flexDirection: 'column',
 	alignSelf: 'end',
 	gap: '0.76px',
-	width: 166,
 
 	'& li': {
 		textAlign: 'end',
