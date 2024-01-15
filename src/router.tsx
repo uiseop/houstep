@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Home, Order } from '@pages/index';
+import { Complete, Home, Order, Error } from '@pages/index';
 
 export const router = createBrowserRouter([
 	{
@@ -12,6 +12,14 @@ export const router = createBrowserRouter([
 			{
 				path: 'order',
 				element: <Order />,
+			},
+			{
+				path: 'complete',
+				element: <Complete />,
+			},
+			{
+				path: 'error',
+				element: <Error />,
 			},
 		],
 	},

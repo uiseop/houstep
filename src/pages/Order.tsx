@@ -5,7 +5,7 @@ import { useGetAllProductList } from '@hooks/useProductApi';
 import { Product } from 'src/models';
 
 export const Order = () => {
-	const { isLoading, isError, data: items } = useGetAllProductList();
+	const { isLoading, isError, data: products } = useGetAllProductList();
 
 	if (isLoading)
 		return (
@@ -37,8 +37,8 @@ export const Order = () => {
 		<>
 			<Header />
 			<CardContainer>
-				{items?.map((item: Product) => {
-					return <Card key={item.id} {...item} />;
+				{products?.map((product: Product) => {
+					return <Card key={product.id} product={product} />;
 				})}
 			</CardContainer>
 			<ShoppingBag />
