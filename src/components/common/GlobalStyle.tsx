@@ -55,6 +55,7 @@ const resetStyle = css`
 	html {
 		box-sizing: border-box;
 		font-family: 'Inter', sans-serif;
+		font-size: 18px;
 	}
 	*,
 	:after,
