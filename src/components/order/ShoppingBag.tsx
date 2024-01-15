@@ -2,13 +2,16 @@ import styled from '@emotion/styled';
 import { Button } from '..';
 import colors from '@assets/colors.json';
 import { addCommasToNumber } from '@utils/index';
+import { useCartStore } from '@stores/cart';
 
 export const ShoppingBag = () => {
+	const { getTotalQuantities, getTotalPrices } = useCartStore();
+
 	return (
 		<Wrapper>
 			<OrderInfo>
-				<li>총 수량: {addCommasToNumber(0)}개</li>
-				<li>총 가격: {addCommasToNumber(0)}원</li>
+				<li>총 수량: {addCommasToNumber(getTotalQuantities())}개</li>
+				<li>총 가격: {addCommasToNumber(getTotalPrices())}원</li>
 			</OrderInfo>
 			<Button
 				loadingContent="로딩중..."

@@ -1,26 +1,32 @@
 import styled from '@emotion/styled';
 import { useState } from 'react';
 import { addCommasToNumber } from '@utils/index';
+import { useCartStore } from '@stores/cart';
+import { Product } from 'src/models';
 
 interface QuantityProps {
 	initQuantity?: number;
+	id: string;
+	name: string;
+	price: number;
 }
 
-export const Quantity = ({ initQuantity = 0 }: QuantityProps) => {
-	const [quantity, setQuantity] = useState(initQuantity);
+export const Quantity = ({ id, name, price }: QuantityProps) => {
+	const { add, remove, getItemQuantity } = useCartStore();
+	const product = { id, name, price } as Product;
 
 	const handleMinusClick = () => {
-		setQuantity((pre) => pre - 1);
+		remove(id);
 	};
 
 	const handlePlusClick = () => {
-		setQuantity((pre) => pre + 1);
+		add(product);
 	};
 
 	return (
 		<Wrapper>
 			<button onClick={handleMinusClick}>-</button>
-			<span>{addCommasToNumber(quantity)}</span>
+			<span>{addCommasToNumber(getItemQuantity(id))}</span>
 			<button onClick={handlePlusClick}>+</button>
 		</Wrapper>
 	);

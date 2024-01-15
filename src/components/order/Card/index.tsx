@@ -3,18 +3,26 @@ import { Quantity } from './Quantity';
 import { addCommasToNumber } from '@utils/index';
 import { Badge } from '@components/common/Badge';
 
-export const Card = () => {
+export interface CardProps {
+	id: string;
+	name: string;
+	event: number;
+	materialType: number;
+	price: number;
+}
+
+export const Card = ({ id, name, event, materialType, price }: CardProps) => {
 	return (
 		<Wrapper isActive={false}>
 			<img src="/images/defaultImage.png" alt="product image" />
 			<CardInfoWrapper>
 				<Heaedr>
-					<Title>A 벽지</Title>
-					<Badge content="이벤트" />
+					<Title>{name}</Title>
+					{event ? <Badge content="이벤트" /> : ''}
 				</Heaedr>
 				<DescriptionWrapper>
-					<Quantity />
-					<Price>{addCommasToNumber(1000000)}원</Price>
+					<Quantity id={id} name={name} price={price} />
+					<Price>{addCommasToNumber(price)}원</Price>
 				</DescriptionWrapper>
 			</CardInfoWrapper>
 		</Wrapper>
