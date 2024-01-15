@@ -1,5 +1,7 @@
 import { useProductContext } from '@context/ProductProvider';
-import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/react-query';
+import { useRouter } from './useRouter';
+import { CartItem, useCartStore } from '@stores/cart';
 
 export const useGetProductList = () => {
 	const { product } = useProductContext();
@@ -19,5 +21,20 @@ export const useGetAllProductList = () => {
 		queryKey: ['all-products'],
 		queryFn: () => product?.getAllProducts(),
 		refetchOnMount: false,
+	});
+};
+
+export const usePostOrderList = () => {
+	const { product } = useProductContext();
+	const { removeAll } = useCartStore();
+	const { navToComplete, navToError } = useRouter();
+
+	return useMutation({
+		mutationFn: (cart: CartItem[]) => product!.postOrder(cart),
+		onSuccess: () => {
+			removeAll();
+			navToComplete();
+		},
+		onError: () => navToError(),
 	});
 };

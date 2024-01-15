@@ -1,6 +1,7 @@
 import { Product } from 'src/models';
 import { ProductClient } from './ProductClient';
-import { ProductResponse } from './responseTypes';
+import { OrderResponse, ProductResponse } from './responseTypes';
+import { CartItem } from '@stores/cart';
 
 /**
  * ProductClient(httpClient)를 통해 API(비즈니스로직)를 요청하는 서비스 클래스입니다.
@@ -24,5 +25,13 @@ export class ProductService {
 			data,
 			nextPage: data.length ? page + 1 : null,
 		};
+	}
+
+	async postOrder(cartItems: CartItem[]): Promise<OrderResponse> {
+		const res = await this.productClient
+			.postProduct(cartItems)
+			.then((res) => res.data);
+
+		return res;
 	}
 }

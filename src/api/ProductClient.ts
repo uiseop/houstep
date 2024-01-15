@@ -1,5 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
-import { BASE_URL, PRODUCT_URL } from './URL';
+import { BASE_URL, ORDER_URL, PRODUCT_URL } from './URL';
+import { CartItem } from './../stores/cart';
 
 /**
  * 하나의 AxiosInstance과 API를 호출하는 객체입니다.
@@ -9,7 +10,7 @@ export class ProductClient {
 	constructor() {
 		this.httpClient = axios.create({
 			baseURL: BASE_URL,
-			timeout: 5000,
+			timeout: 4000,
 		});
 
 		this.httpClient.interceptors.response.use(
@@ -54,5 +55,9 @@ export class ProductClient {
 		return await this.httpClient.get(
 			`${PRODUCT_URL}/?_page=${page}&_limit=10`,
 		);
+	}
+
+	async postProduct(cartItems: CartItem[]) {
+		return await this.httpClient.post(ORDER_URL, cartItems);
 	}
 }

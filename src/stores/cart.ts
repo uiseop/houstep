@@ -1,7 +1,7 @@
 import { Product } from 'src/models';
 import { create } from 'zustand';
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
 	quantity: number;
 }
 

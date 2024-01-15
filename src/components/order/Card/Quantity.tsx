@@ -4,18 +4,14 @@ import { useCartStore } from '@stores/cart';
 import { Product } from 'src/models';
 
 interface QuantityProps {
-	initQuantity?: number;
-	id: string;
-	name: string;
-	price: number;
+	product: Product;
 }
 
-export const Quantity = ({ id, name, price }: QuantityProps) => {
+export const Quantity = ({ product }: QuantityProps) => {
 	const { add, remove, getItemQuantity } = useCartStore();
-	const product = { id, name, price } as Product;
 
 	const handleMinusClick = () => {
-		remove(id);
+		remove(product.id);
 	};
 
 	const handlePlusClick = () => {
@@ -25,7 +21,7 @@ export const Quantity = ({ id, name, price }: QuantityProps) => {
 	return (
 		<Wrapper>
 			<button onClick={handleMinusClick}>-</button>
-			<span>{addCommasToNumber(getItemQuantity(id))}</span>
+			<span>{addCommasToNumber(getItemQuantity(product.id))}</span>
 			<button onClick={handlePlusClick}>+</button>
 		</Wrapper>
 	);

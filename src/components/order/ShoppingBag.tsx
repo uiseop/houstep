@@ -3,31 +3,41 @@ import { Button } from '..';
 import colors from '@assets/colors.json';
 import { addCommasToNumber } from '@utils/index';
 import { useCartStore } from '@stores/cart';
+import { usePostOrderList } from '@hooks/useProductApi';
 
 interface ShoppingBagProps {
 	disabled?: boolean;
 }
 
 export const ShoppingBag = ({ disabled }: ShoppingBagProps) => {
-	const { getTotalQuantities, getTotalPrices } = useCartStore();
+	const { getTotalQuantities, getTotalPrices, cart } = useCartStore();
+	const { mutate: addOrder, isPending: loading } = usePostOrderList();
+
+	const totalQuantities = getTotalQuantities();
+	const totalPrice = getTotalPrices();
+
+	const handleClick = () => {
+		if (!totalQuantities) return;
+
+		addOrder(cart);
+	};
 
 	return (
 		<Wrapper>
 			<OrderInfo>
-				<li>총 수량: {addCommasToNumber(getTotalQuantities())}개</li>
-				<li>총 가격: {addCommasToNumber(getTotalPrices())}원</li>
+				<li>총 수량: {addCommasToNumber(totalQuantities)}개</li>
+				<li>총 가격: {addCommasToNumber(totalPrice)}원</li>
 			</OrderInfo>
 			<Button
 				loadingContent="로딩중..."
+				loading={loading}
 				content="주문하기"
 				fullWidth
 				size="small"
 				disabled={disabled}
 				backgroundColor={colors.black}
 				color={colors.white}
-				onClick={function (): void {
-					throw new Error('Function not implemented.');
-				}}
+				onClick={handleClick}
 			/>
 		</Wrapper>
 	);
