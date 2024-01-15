@@ -100,5 +100,5 @@ const CardContainer = styled.ul`
 	display: flex;
 	flex-direction: column;
 	gap: 18px;
-	margin: 18px 24px 188px 25px;
+	margin: 75px 24px 188px 25px;
 `;
