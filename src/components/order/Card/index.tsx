@@ -2,16 +2,9 @@ import styled from '@emotion/styled';
 import { Quantity } from './Quantity';
 import { addCommasToNumber } from '@utils/index';
 import { Badge } from '@components/common/Badge';
+import { Product } from 'src/models';
 
-export interface CardProps {
-	id: string;
-	name: string;
-	event: number;
-	materialType: number;
-	price: number;
-}
-
-export const Card = ({ id, name, event, materialType, price }: CardProps) => {
+export const Card = ({ id, name, event, materialType, price }: Product) => {
 	return (
 		<Wrapper isActive={false}>
 			<img src="/images/defaultImage.png" alt="product image" />

@@ -4,7 +4,11 @@ import colors from '@assets/colors.json';
 import { addCommasToNumber } from '@utils/index';
 import { useCartStore } from '@stores/cart';
 
-export const ShoppingBag = () => {
+interface ShoppingBagProps {
+	disabled?: boolean;
+}
+
+export const ShoppingBag = ({ disabled }: ShoppingBagProps) => {
 	const { getTotalQuantities, getTotalPrices } = useCartStore();
 
 	return (
@@ -18,6 +22,7 @@ export const ShoppingBag = () => {
 				content="주문하기"
 				fullWidth
 				size="small"
+				disabled={disabled}
 				backgroundColor={colors.black}
 				color={colors.white}
 				onClick={function (): void {
